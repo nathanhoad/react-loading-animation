@@ -1,0 +1,40 @@
+{
+  "name": "react-loading-animation",
+  "version": "1.0.0",
+  "description": "A pretty loading spinner based on Google's colorful spinner animation.",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "npm run compile && mocha test/index.js --compilers js:babel-register",
+    "compile": "babel -d lib/ src/",
+    "prepublish": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nathanhoad/react-loading-animation.git"
+  },
+  "keywords": [
+    "react",
+    "loading",
+    "spinner",
+    "animation",
+    "svg"
+  ],
+  "author": "Nathan Hoad",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nathanhoad/react-loading-animation/issues"
+  },
+  "homepage": "https://github.com/nathanhoad/react-loading-animation#readme",
+  "dependencies": {
+    "react": "^15.0.2"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.7.7",
+    "babel-preset-es2015": "^6.6.0",
+    "babel-preset-react": "^6.5.0",
+    "babel-register": "^6.7.2",
+    "code": "^2.2.1",
+    "enzyme": "^2.2.0",
+    "mocha": "^2.4.5"
+  }
+}
