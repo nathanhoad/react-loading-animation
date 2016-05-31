@@ -69,6 +69,12 @@ class Loading extends React.Component {
         let { isLoading, children } = this.props;
         
         if (isLoading) {
+            let { width, height, margin } = this.props;
+            
+            loading_style.width = width;
+            loading_style.height = height;
+            loading_style.margin = margin;
+            
             return (
                 <div style={loading_style}>
                     <style>{animation}</style>
@@ -85,12 +91,18 @@ class Loading extends React.Component {
 
 
 Loading.propTypes = {
-    isLoading: React.PropTypes.bool
+    isLoading: React.PropTypes.bool,
+    width: React.PropTypes.string,
+    height: React.PropTypes.string,
+    margin: React.PropTypes.string
 };
 
 
 Loading.defaultProps = {
-    isLoading: true
+    isLoading: true,
+    width: '40px',
+    height: '40px',
+    margin: '0 auto'
 };
 
 

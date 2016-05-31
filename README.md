@@ -5,14 +5,14 @@ A simple loading component to show a colorful animated spinner.
 
 ## Usage
 
-```js
+```javascript
 const Loading = require('react-loading-animation');
 ```
 
 You can either render the component directly (with no props) or render it as a parent
 of other components and pass in `isLoading` as a prop:
 
-```js
+```javascript
 const ListOfThings = ({ isFetching, things }) => {
     if (isFetching && things.size() == 0) return <Loading />;
     
@@ -26,7 +26,7 @@ const ListOfThings = ({ isFetching, things }) => {
 
 or
 
-```js
+```javascript
 const ListOfThings = ({ isFetching, things }) => {
     return (
         <Loading isLoading={isFetching && things.size() == 0}>
