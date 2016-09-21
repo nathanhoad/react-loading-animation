@@ -14,9 +14,9 @@ const svg_style = {
     transformOrigin: 'center center',
     width: '100%',
     position: 'absolute',
-    top: 0, 
+    top: 0,
     bottom: 0,
-    left: 0, 
+    left: 0,
     right: 0,
     margin: 'auto'
 };
@@ -29,7 +29,7 @@ const circle_style = {
 };
 
 
-const animation = `@keyframes rotate { 
+const animation = `@keyframes rotate {
     100% {
         transform: rotate(360deg);
     }
@@ -67,16 +67,16 @@ const animation = `@keyframes rotate {
 class Loading extends React.Component {
     render () {
         let { isLoading, children } = this.props;
-        
+
         if (isLoading) {
-            let { width, height, margin } = this.props;
-            
+            let { width, height, margin, style } = this.props;
+
             loading_style.width = width;
             loading_style.height = height;
             loading_style.margin = margin;
-            
+
             return (
-                <div style={loading_style}>
+                <div style={Object.assign({}, loading_style, style)}>
                     <style>{animation}</style>
                     <svg style={svg_style} viewBox="25 25 50 50">
                         <circle style={circle_style} cx="50" cy="50" r="20" fill="none" strokeWidth="7" strokeMiterlimit="10"/>
@@ -92,6 +92,7 @@ class Loading extends React.Component {
 
 Loading.propTypes = {
     isLoading: React.PropTypes.bool,
+    style: React.PropTypes.object,
     width: React.PropTypes.string,
     height: React.PropTypes.string,
     margin: React.PropTypes.string
@@ -100,6 +101,7 @@ Loading.propTypes = {
 
 Loading.defaultProps = {
     isLoading: true,
+    style: {},
     width: '40px',
     height: '40px',
     margin: '0 auto'
