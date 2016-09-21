@@ -1,5 +1,7 @@
 # React Loading Animation
 
+![](https://codeship.com/projects/1d909030-61f0-0134-dd2d-36e4b4e4e227/status?branch=master)
+
 A simple loading component to show a colorful animated spinner.
 
 
