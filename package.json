@@ -1,6 +1,6 @@
 {
   "name": "react-loading-animation",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "A pretty loading spinner based on Google's colorful spinner animation.",
   "main": "lib/index.js",
   "scripts": {
