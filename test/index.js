@@ -1,63 +1,57 @@
 const React = require('react');
 const { shallow } = require('enzyme');
-const { expect } = require('code');
+const { test } = require('ava');
 
 const Loading = require('../lib');
 
 
-describe('Spinner', () => {
-
-    it('renders with no props', (done) => {
-        let loader = shallow(<Loading />);
-
-        expect(loader.html()).to.contain("<svg");
-        expect(loader.html()).to.contain("<circle");
-        expect(loader.html()).to.contain("</svg>");
-
-        done();
-    });
-
-    it('renders with no props and style', (done) => {
-        let loader = shallow(<Loading style={{display: 'inline-block', color: '#123456', marginLeft: '30px', top: '10px'}} />);
-
-        expect(loader.html()).to.contain("display:inline-block");
-        expect(loader.html()).to.contain("color:#123456");
-        expect(loader.html()).to.contain("margin-left:30px");
-        expect(loader.html()).to.contain("top:10px");
-        expect(loader.html()).to.contain("<svg");
-        expect(loader.html()).to.contain("<circle");
-        expect(loader.html()).to.contain("</svg>");
-
-        done();
-    });
+test('renders with no props', t => {
+    let loader = shallow(<Loading />);
+    
+    
+    t.not(loader.html().indexOf("<svg"), -1);
+    t.not(loader.html().indexOf("<circle"), -1);
+    t.not(loader.html().indexOf("</svg>"), -1);
+});
 
 
-    it('renders with children', (done) => {
-        let loader = shallow(
-            <Loading isLoading={true}>
-                <div>Child 1</div>
-                <div>Child 2</div>
-            </Loading>
-        );
-        expect(loader.html()).to.contain("<svg");
-        expect(loader.html()).to.contain("<circle");
-        expect(loader.html()).to.contain("</svg>");
-        expect(loader.html()).to.not.contain("Child 1");
-        expect(loader.html()).to.not.contain("Child 2");
+test('renders with no props and style', t => {
+    let loader = shallow(<Loading style={{display: 'inline-block', color: '#123456', marginLeft: '30px', top: '10px'}} />);
 
-        loader = shallow(
-            <Loading isLoading={false}>
-                <div>Child 1</div>
-                <div>Child 2</div>
-            </Loading>
-        );
-        expect(loader.html()).to.not.contain("<svg");
-        expect(loader.html()).to.not.contain("<circle");
-        expect(loader.html()).to.not.contain("</svg>");
-        expect(loader.html()).to.contain("Child 1");
-        expect(loader.html()).to.contain("Child 2");
+    t.not(loader.html().indexOf("display:inline-block"), -1);
+    t.not(loader.html().indexOf("color:#123456"), -1);
+    t.not(loader.html().indexOf("margin-left:30px"), -1);
+    t.not(loader.html().indexOf("top:10px"), -1);
+    t.not(loader.html().indexOf("<svg"), -1);
+    t.not(loader.html().indexOf("<circle"), -1);
+    t.not(loader.html().indexOf("</svg>"), -1);
+});
 
-        done();
-    });
 
+test('renders with children', t => {
+    let loader = shallow(
+        <Loading isLoading={true}>
+            <div>Child 1</div>
+            <div>Child 2</div>
+        </Loading>
+    );
+    
+    t.not(loader.html().indexOf("<svg"), -1);
+    t.not(loader.html().indexOf("<circle"), -1);
+    t.not(loader.html().indexOf("</svg>"), -1);
+    t.is(loader.html().indexOf("Child 1"), -1);
+    t.is(loader.html().indexOf("Child 2"), -1);
+
+    loader = shallow(
+        <Loading isLoading={false}>
+            <div>Child 1</div>
+            <div>Child 2</div>
+        </Loading>
+    );
+    
+    t.is(loader.html().indexOf("<svg"), -1);
+    t.is(loader.html().indexOf("<circle"), -1);
+    t.is(loader.html().indexOf("</svg>"), -1);
+    t.not(loader.html().indexOf("Child 1"), -1);
+    t.not(loader.html().indexOf("Child 2"), -1);
 });

@@ -1,4 +1,5 @@
 const React = require('react');
+const PropTypes = require('prop-types');
 
 
 const loading_style = {
@@ -91,11 +92,11 @@ class Loading extends React.Component {
 
 
 Loading.propTypes = {
-    isLoading: React.PropTypes.bool,
-    style: React.PropTypes.object,
-    width: React.PropTypes.string,
-    height: React.PropTypes.string,
-    margin: React.PropTypes.string
+    isLoading: PropTypes.bool,
+    style: PropTypes.object,
+    width: PropTypes.string,
+    height: PropTypes.string,
+    margin: PropTypes.string
 };
 
 
