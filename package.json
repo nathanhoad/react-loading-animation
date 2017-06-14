@@ -4,7 +4,7 @@
   "description": "A pretty loading spinner based on Google's colorful spinner animation.",
   "main": "lib/index.js",
   "scripts": {
-    "test": "ava",
+    "test": "npm run compile && ava",
     "compile": "babel -d lib/ src/",
     "prepublish": "npm run compile"
   },
